@@ -1,7 +1,6 @@
 {
-    "name": "comunidad01",
-    "license": "MIT",
-    "type": "project",
+    "name": "symfony/comunidad",
+    "type": "test",
     "description": "Comunidad hecha con symfony",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
