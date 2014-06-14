@@ -1,3 +1,10 @@
 usuarios_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: UsuariosBundle:Default:index }
+recetas:
+ pattern: /recipes/{id}
+ defaults: { _controller: UsuariosBundle:Recipe:showid }
+ requirements : \d+
+recetas_seo:
+ pattern: /recetas/{name}
+ defaults: { _controller: UsuariosBundle:Recipe:showname }
