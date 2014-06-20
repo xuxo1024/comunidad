@@ -1,0 +1,26 @@
+Comunidad\UsuariosBundle\Entity\Users:
+    type: entity
+    table: users
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        login:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }
