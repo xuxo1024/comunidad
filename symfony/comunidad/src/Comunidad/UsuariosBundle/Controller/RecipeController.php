@@ -13,17 +13,17 @@ class RecipeController extends Controller
 	
 	public function showidAction($id)
     {
-        if is_int ( $id )
-		{
-			//llamada al modelo para sacar el nombre y la url del elemento
-			$name = "modelourl";
-			return $this->forward('UsuariosBundle:Recipe:showname',array('name' => $name));
+  //       if is_int ( $id )
+		// {
+		// 	//llamada al modelo para sacar el nombre y la url del elemento
+		// 	$name = "modelourl";
+		// 	return $this->forward('UsuariosBundle:Recipe:showname',array('name' => $name));
 			
-		}
-		else
-		{
-			return $this->forward('UsuariosBundle:Recipe:showname',array('name' => $id));
-		}
+		// }
+		// else
+		// {
+		// 	return $this->forward('UsuariosBundle:Recipe:showname',array('name' => $id));
+		// }
 		
 		
 		return $this->render('UsuariosBundle:Recipe:index.html.twig', array('name' => $id));
