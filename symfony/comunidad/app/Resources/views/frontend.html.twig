@@ -49,5 +49,7 @@
 {% block footer %}
     <a href="{{ path('pagina_estatica', { 'pagina': 'ayuda' }) }}">Ayuda</a>
     Contacto: <a href="mailto:{{ contact_email }} "> {{ contact_email }} </a>
+    <a href="{{ path('usuarios_registro_create')}}">Registro</a>
+    <a href="{{ path('usuarios_mensaje_create')}}">Nuevo Mensaje</a>
     &copy; {{ 'now' | date('Y') }} - Comunidad Test
 {% endblock %}

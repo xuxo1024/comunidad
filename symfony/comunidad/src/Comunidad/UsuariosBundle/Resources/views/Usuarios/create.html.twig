@@ -1,0 +1,38 @@
+{# src/Comunidad/UsuariosBundle/Resources/views/create.html.twig #}
+{% extends '::frontend.html.twig' %}
+ 
+{% block title %} 
+	Create user 
+{% endblock %}
+
+{% block id 'ayuda' %}
+ 
+{% block article %} 
+	{#{form(form)}#}
+
+	{{form_start(form,{'attr' : { 'id' : 'user-create' }})}}
+
+	{{form_errors(form)}}
+
+	<ul>
+		<li>
+		{{form_label(form.login)}}
+		{{form_errors(form.login)}}
+		{{form_widget(form.login)}}
+		</li>
+
+		<li>
+		{{form_label(form.password)}}
+		{{form_errors(form.password)}}
+		{{form_widget(form.password)}}
+		</li>
+
+
+		<li>{{form_widget(form.save)}}</li>
+
+	</ul>
+	{{form_end(form)}}
+
+{% endblock %}
+ 
+{% block aside %} bloque lado {% endblock %}
