@@ -1,0 +1,19 @@
+{% extends '::frontend.html.twig' %}
+ 
+{% block title %} 
+	Listar usuarios
+{% endblock %}
+
+{% block id 'ayuda' %}
+ 
+{% block article %} 
+	<ul>
+{% for items in listado %}
+	<li> <a href="{{ path('usuarios_edit',{'id':items.id})}}">{{ items.login|e }} </a></li>
+{% endfor %}
+	</ul>
+	
+
+{% endblock %}
+ 
+{% block aside %} bloque lado {% endblock %}

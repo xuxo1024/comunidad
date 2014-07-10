@@ -17,6 +17,17 @@ class UsuariosController extends Controller
 	 *  @Template()
 	 */
 	
+	public function ListadoAction()
+	{
+
+		$em = $this->getDoctrine()->getManager();
+		$listado = $em->getRepository('UsuariosBundle:Users')->findAll();
+
+
+
+		return $this->render('UsuariosBundle:Usuarios:listado.html.twig',array('listado'=>$listado));	
+	}
+
 	public function CreateAction( Request $request)
 	{
 		$usuario = new Users;
@@ -24,6 +35,8 @@ class UsuariosController extends Controller
 		$form = $this->createForm(new RegisterUser, $usuario);
 
 		$form->handleRequest($request);
+
+		
 
 		if ($form->isValid())
 		{
@@ -40,6 +53,32 @@ class UsuariosController extends Controller
 	public function ShowAction( Request $request)
 	{
 			return $this->render('UsuariosBundle:Usuarios:exito.html.twig');
+	}
+
+	public function EditAction( $id, Request $request )
+	{
+		
+		$em = $this->getDoctrine()->getManager();
+		$usuario = $em->getRepository('UsuariosBundle:Users')->find($id);
+
+		if (!$usuario) {
+      		throw $this->createNotFoundException(
+              'No news found for id ' . $id
+      		);
+    	}
+
+    	$form = $this->createForm(new RegisterUser, $usuario);
+
+    	$form->handleRequest($request);
+
+    	if ($form->isValid())
+		{
+			$em->flush();
+			return $this->render('UsuariosBundle:Usuarios:exito.html.twig');
+		}
+
+		$build['form'] = $form->createView();
+		return $this->render('UsuariosBundle:Usuarios:create.html.twig', $build);
 	}
 
 }

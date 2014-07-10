@@ -51,5 +51,7 @@
     Contacto: <a href="mailto:{{ contact_email }} "> {{ contact_email }} </a>
     <a href="{{ path('usuarios_registro_create')}}">Registro</a>
     <a href="{{ path('usuarios_mensaje_create')}}">Nuevo Mensaje</a>
+    <a href="{{ path('usuarios_listado')}}">Listado Usuarios</a>
+    <a href="{{ path('usuarios_mensaje_listar')}}">Listado Mensajes</a>
     &copy; {{ 'now' | date('Y') }} - Comunidad Test
 {% endblock %}

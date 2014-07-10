@@ -11,10 +11,18 @@ class MesaggesType extends AbstractType
 	public function buildForm (FormBuilderInterface $builder, array $options)
 	{
 
+		
+
 		$builder 
-			->add('id_user','text')
-			->add('to_user','text')
-			->add('message','text')
+			
+			->add('to_user', 'entity', array(
+					'mapped' => false,
+					'class' => 'UsuariosBundle:Users',
+					'property' => 'login'))
+			
+				
+			//->add('to_user', 'number')
+			->add('message','textarea')
 			->add('save','submit');
 	}
 

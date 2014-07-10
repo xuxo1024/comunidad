@@ -14,12 +14,28 @@ homepage:
 pagina_estatica:
     pattern: /estaticas/{pagina}
     defaults: {_controller: UsuariosBundle:Default:estatica}
+
 usuarios_registro_create:
     pattern: /usuarios/registro
     defaults: {_controller:UsuariosBundle:Usuarios:create}
-usuarios_mensaje_create:
-    pattern: /mensaje/nuevo
-    defaults: {_controller:UsuariosBundle:Mensajes:create}
 usuarios_create_show:
     pattern: /usuarios/show
     defaults: {_controller:UsuariosBundle:Usuarios:show}
+usuarios_edit:
+    pattern: /usuarios/editar/{id}
+    defaults: {_controller:UsuariosBundle:Usuarios:edit}
+usuarios_listado:
+    pattern: /usuarios/listado
+    defaults: {_controller:UsuariosBundle:Usuarios:listado}
+
+
+
+usuarios_mensaje_listar:
+    pattern: /mensaje/listado
+    defaults: {_controller:UsuariosBundle:Mensajes:listado}
+usuarios_mensaje_create:
+    pattern: /mensaje/nuevo
+    defaults: {_controller:UsuariosBundle:Mensajes:create}
+usuarios_mensaje_edit:
+    pattern: /mensaje/editar/{id}
+    defaults: {_controller:UsuariosBundle:Mensajes:edit}
