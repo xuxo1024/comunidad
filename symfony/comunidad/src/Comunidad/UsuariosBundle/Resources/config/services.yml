@@ -5,3 +5,11 @@ services:
 #    usuarios.example:
 #        class: %usuarios.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+#        
+ my_messages.last_messages:
+  class: Comunidad\UsuariosBundle\Model\LastMessages
+  arguments: ["@doctrine.orm.entity_manager"]
+
+ users.last_users:
+  class: Comunidad\UsuariosBundle\Model\LastUsers
+  arguments: ["@doctrine.orm.entity_manager"]

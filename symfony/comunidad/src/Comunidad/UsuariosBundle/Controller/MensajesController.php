@@ -18,6 +18,15 @@ class MensajesController extends Controller
 	 */
 	
 
+
+	public function lastMessagesAction()
+	{
+		$date = new \DateTime('-10 days');
+		return array(
+				      'messages' => $this->get('my_messages.last_messages')->findFrom($date);
+			)
+	}
+
 	public function ListadoAction()
 	{
 
