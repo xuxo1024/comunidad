@@ -1,5 +1,6 @@
 Comunidad\UsuariosBundle\Entity\Users:
     type: entity
+    repositoryClass: Comunidad\UsuariosBundle\Repository\UsersRepository
     table: users
     id:
         id:

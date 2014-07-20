@@ -31,7 +31,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         contact_email: xuxo@xuxo.net
-
+        
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"

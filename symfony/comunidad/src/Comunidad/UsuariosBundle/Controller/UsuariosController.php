@@ -21,9 +21,10 @@ class UsuariosController extends Controller
 	public function lastUsersAction()
 	{
 		$date = new \DateTime('-10 days');
+		
 		return array(
-				      'messages' => $this->get('users.last_users')->findFrom($date);
-			)
+				      'messages' => $this->get('users.last_users')->findFrom($date)
+			);
 	}
 
 	public function ListadoAction()

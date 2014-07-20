@@ -23,8 +23,8 @@ class MensajesController extends Controller
 	{
 		$date = new \DateTime('-10 days');
 		return array(
-				      'messages' => $this->get('my_messages.last_messages')->findFrom($date);
-			)
+				      'messages' => $this->get('my_messages.last_messages')->findFrom($date)
+			);
 	}
 
 	public function ListadoAction()

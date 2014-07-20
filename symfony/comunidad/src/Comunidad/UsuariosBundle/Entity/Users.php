@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
+
+/**
+ * @ORM\Entity(repositoryClass="Comunidad\UsuariosBundle\Repository\UsersRepository")
+*/
+
 class Users
 {
     /**
