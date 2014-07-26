@@ -33,7 +33,8 @@ class MensajesController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$listado = $em->getRepository('UsuariosBundle:Messages')->findAll();
 
-
+			$logger = $this->get('logger');
+			$logger->info('listado Mensajes');
 
 		return $this->render('UsuariosBundle:Mensajes:listado.html.twig',array('listado'=>$listado));	
 	}
@@ -66,6 +67,9 @@ class MensajesController extends Controller
 			$mensaje->setToUser($_POST["mesagges"]["to_user"]);
 			$em->persist($mensaje);
 			$em->flush();
+			$logger = $this->get('logger');
+			$logger->info('mensaje creado');
+
 			return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $mensaje->getId())));
 		}
 
@@ -89,6 +93,8 @@ class MensajesController extends Controller
 		$mensaje = $em->getRepository('UsuariosBundle:Messages')->find($id);
 
 		if (!$mensaje) {
+			$logger = $this->get('logger');
+			$logger->error('edicion mensaje error');
       		throw $this->createNotFoundException(
               'No news found for id ' . $id
       		);
@@ -101,6 +107,8 @@ class MensajesController extends Controller
     	if ($form->isValid())
 		{
 			$em->flush();
+			$logger = $this->get('logger');
+			$logger->info('edicion mensaje:'.$id);
 			return $this->render('UsuariosBundle:Mensajes:exito.html.twig');
 		}
 

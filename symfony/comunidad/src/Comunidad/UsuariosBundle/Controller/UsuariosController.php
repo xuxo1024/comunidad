@@ -33,7 +33,8 @@ class UsuariosController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$listado = $em->getRepository('UsuariosBundle:Users')->findAll();
 
-
+			$logger = $this->get('logger');
+			$logger->info('listado Usuarios');
 
 		return $this->render('UsuariosBundle:Usuarios:listado.html.twig',array('listado'=>$listado));	
 	}
@@ -53,6 +54,8 @@ class UsuariosController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($usuario);
 			$em->flush();
+			$logger = $this->get('logger');
+			$logger->info('usuario creado');
 
 			return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $usuario->getId())));
 		}
@@ -72,7 +75,10 @@ class UsuariosController extends Controller
 		$usuario = $em->getRepository('UsuariosBundle:Users')->find($id);
 
 		if (!$usuario) {
-      		throw $this->createNotFoundException(
+
+			$logger = $this->get('logger');
+			$logger->error('edicion usuario error');
+			throw $this->createNotFoundException(
               'No news found for id ' . $id
       		);
     	}
@@ -84,6 +90,8 @@ class UsuariosController extends Controller
     	if ($form->isValid())
 		{
 			$em->flush();
+			$logger = $this->get('logger');
+			$logger->info('edicion usuario:'.$id);
 			return $this->render('UsuariosBundle:Usuarios:exito.html.twig');
 		}
 
