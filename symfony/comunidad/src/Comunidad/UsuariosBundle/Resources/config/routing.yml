@@ -39,3 +39,7 @@ usuarios_mensaje_create:
 usuarios_mensaje_edit:
     pattern: /mensaje/editar/{id}
     defaults: {_controller:UsuariosBundle:Mensajes:edit}
+
+admin:
+    pattern: /admin
+    defaults: {_controller:UsuariosBundle:Admin:index}
