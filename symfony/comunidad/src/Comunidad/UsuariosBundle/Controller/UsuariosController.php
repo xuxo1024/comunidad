@@ -60,7 +60,8 @@ class UsuariosController extends Controller
 			return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $usuario->getId())));
 		}
 
-		return array('form'=> $form->createView());
+		//return array('form'=> $form->createView());
+		return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
 	}
 
 	public function ShowAction( Request $request)

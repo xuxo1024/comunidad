@@ -75,7 +75,8 @@ class MensajesController extends Controller
 
 
 
-		return array('form'=> $form->createView());
+		//return array('form'=> $form->createView());
+		return $this->render('UsuariosBundle:Mensajes:create.html.twig', array('form' => $form->createView()));
 		
 
 		
