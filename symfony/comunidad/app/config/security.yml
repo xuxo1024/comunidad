@@ -18,8 +18,12 @@ security:
         secured_area:
          pattern: ^/
          anonymous: ~
-         http_basic:
-          realm: "Usuarios"
+         #http_basic:
+          #realm: "Usuarios"
+         form_login:
+          login_path: login_path
+          check_path: login_check
+         logout: ~
 
     access_control:
      - { path: ^/admin, roles: ROLE_ADMIN }

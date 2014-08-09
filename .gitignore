@@ -213,3 +213,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/comunidad.sublime-project
+/comunidad.sublime-workspace
+/symfony/comunidad/comunidad.sublime-project
+/symfony/comunidad/comunidad.sublime-workspace
