@@ -30,6 +30,14 @@
 				<source>Community</source>
 				<target>Comunidad</target>
 			</trans-unit>
+			<trans-unit id="8">
+				<source>Create message</source>
+				<target>Crear mensaje</target>
+			</trans-unit>
+			<trans-unit id="9">
+				<source>User created</source>
+				<target>Usuario creado</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
