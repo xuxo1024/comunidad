@@ -2,51 +2,80 @@
 #    pattern:  /hello/{name}
 #    defaults: { _controller: UsuariosBundle:Default:index }
 recetas:
-    pattern: /recipes/{id}
+    pattern: /{_locale}/recipes/{id}
     defaults: { _controller: UsuariosBundle:Recipe:showid }
-    #requirements : \d+
+    requirements : 
+     _locale: en|es
 recetas_seo:
-    pattern: /recetas/{name}
+    pattern: /{_locale}//recetas/{name}
     defaults: { _controller: UsuariosBundle:Recipe:showname }
+    requirements : 
+     _locale: en|es
 homepage:
     pattern: /
     defaults: {_controller: UsuariosBundle:Default:index}
 pagina_estatica:
-    pattern: /estaticas/{pagina}
+    pattern: /{_locale}/estaticas/{pagina}
     defaults: {_controller: UsuariosBundle:Default:estatica}
+    requirements : 
+     _locale: en|es
 
 usuarios_registro_create:
-    pattern: /usuarios/registro
+    pattern: /{_locale}/usuarios/registro
     defaults: {_controller:UsuariosBundle:Usuarios:create}
+    requirements : 
+     _locale: en|es
 usuarios_create_show:
-    pattern: /usuarios/show
+    pattern: /{_locale}/usuarios/show
     defaults: {_controller:UsuariosBundle:Usuarios:show}
+    requirements : 
+     _locale: en|es
 usuarios_edit:
-    pattern: /usuarios/editar/{id}
+    pattern: /{_locale}/usuarios/editar/{id}
     defaults: {_controller:UsuariosBundle:Usuarios:edit}
+    requirements : 
+     _locale: en|es
 usuarios_listado:
-    pattern: /usuarios/listado
+    pattern: /{_locale}/usuarios/listado
     defaults: {_controller:UsuariosBundle:Usuarios:listado}
+    requirements : 
+     _locale: en|es
 
 
 
 usuarios_mensaje_listar:
-    pattern: /mensaje/listado
+    pattern: /{_locale}/mensaje/listado
     defaults: {_controller:UsuariosBundle:Mensajes:listado}
+    requirements : 
+     _locale: en|es
 usuarios_mensaje_create:
-    pattern: /mensaje/nuevo
+    pattern: /{_locale}/mensaje/nuevo
     defaults: {_controller:UsuariosBundle:Mensajes:create}
+    requirements : 
+     _locale: en|es
 usuarios_mensaje_edit:
-    pattern: /mensaje/editar/{id}
+    pattern: /{_locale}/mensaje/editar/{id}
     defaults: {_controller:UsuariosBundle:Mensajes:edit}
+    requirements : 
+     _locale: en|es
 
 admin:
     pattern: /admin
     defaults: {_controller:UsuariosBundle:Admin:index}
+
+registro:
+    pattern: /{_locale}/registro
+    defaults: { _controller: UsuariosBundle:Usuarios:registro}
+    requirements : 
+     _locale: en|es
+
 login:
-    pattern:   /login
+    pattern:   /{_locale}/login
     defaults:  { _controller: UsuariosBundle:Admin:login }
+    requirements : 
+     _locale: en|es
 login_check:
     pattern:   /login_check
-#logout:
-#    path:   /logout
+logout:
+    pattern: /logout
+    

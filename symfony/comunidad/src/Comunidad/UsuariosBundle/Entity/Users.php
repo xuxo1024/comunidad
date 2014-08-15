@@ -39,6 +39,19 @@ class Users
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
+    /**
+     * @var string
+     */
+    private $email;
+    /**
+     * @var string
+     */
+    private $salt;
+    /**
+     * @var string
+     */
+    private $roles = '';
+
 
 
 
@@ -108,5 +121,59 @@ class Users
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function getRoles()
+    {
+        return explode(' ', $this->roles);
+    }
+
+    public function eraseCredentials()
+    {
     }
 }

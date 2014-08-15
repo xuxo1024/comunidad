@@ -10,7 +10,7 @@ Comunidad\UsuariosBundle\Entity\Users:
             comment: ''
             id: true
             generator:
-                strategy: IDENTITY
+                strategy: AUTO
     fields:
         login:
             type: string
@@ -24,4 +24,14 @@ Comunidad\UsuariosBundle\Entity\Users:
             length: 255
             fixed: false
             comment: ''
-    lifecycleCallbacks: {  }
+        email:
+            type: string
+            length: '255'
+            unique: true
+        salt:
+            type: string
+            length: '64'
+        roles:
+            type: string
+            length: '255'
+        #lifecycleCallbacks: {  }

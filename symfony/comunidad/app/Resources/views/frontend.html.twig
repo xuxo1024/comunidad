@@ -29,7 +29,7 @@
  
 {% block body %}
 <header>
-    <h1>Comunidad</h1>
+    <h1>{% trans %}Comunity{% endtrans %}</h1>
     <nav>
         <!--ul>
             <li></li>
@@ -47,11 +47,11 @@
 {% endblock %}
 
 {% block footer %}
-    <a href="{{ path('pagina_estatica', { 'pagina': 'ayuda' }) }}">Ayuda</a>
+    <a href="{{ path('pagina_estatica', { 'pagina': 'ayuda' }) }}">{% trans %}Help{% endtrans %}</a>
     Contacto: <a href="mailto:{{ contact_email }} "> {{ contact_email }} </a>
-    <a href="{{ path('usuarios_registro_create')}}">Registro</a>
-    <a href="{{ path('usuarios_mensaje_create')}}">Nuevo Mensaje</a>
-    <a href="{{ path('usuarios_listado')}}">Listado Usuarios</a>
-    <a href="{{ path('usuarios_mensaje_listar')}}">Listado Mensajes</a>
-    &copy; {{ 'now' | date('Y') }} - Comunidad Test
+    <a href="{{ path('usuarios_registro_create')}}">{% trans %}Register{% endtrans %}</a>
+    <a href="{{ path('usuarios_mensaje_create')}}">{% trans %}New message{% endtrans %}</a>
+    <a href="{{ path('usuarios_listado')}}">{% trans %}Users list{% endtrans %}</a>
+    <a href="{{ path('usuarios_mensaje_listar')}}">{% trans %}Messages list{% endtrans %}</a>
+    &copy; {{ 'now' | date('Y') }} - {% trans %}Comunity{% endtrans %} test
 {% endblock %}
