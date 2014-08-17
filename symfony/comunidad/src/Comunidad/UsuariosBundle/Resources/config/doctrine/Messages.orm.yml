@@ -1,9 +1,8 @@
 Comunidad\UsuariosBundle\Entity\Messages:
     type: entity
-    repositoryClass: Comunidad\UsuariosBundle\Repository\MessagesRepository
     table: messages
     indexes:
-        id_user:
+        IDX_DB021E966B3CA4B:
             columns:
                 - id_user
     id:

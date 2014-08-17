@@ -1,7 +1,10 @@
 Comunidad\UsuariosBundle\Entity\Users:
     type: entity
-    repositoryClass: Comunidad\UsuariosBundle\Repository\UsersRepository
     table: users
+    uniqueConstraints:
+        UNIQ_1483A5E9E7927C74:
+            columns:
+                - email
     id:
         id:
             type: integer
@@ -10,7 +13,7 @@ Comunidad\UsuariosBundle\Entity\Users:
             comment: ''
             id: true
             generator:
-                strategy: AUTO
+                strategy: IDENTITY
     fields:
         login:
             type: string
@@ -26,12 +29,20 @@ Comunidad\UsuariosBundle\Entity\Users:
             comment: ''
         email:
             type: string
-            length: '255'
-            unique: true
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
         salt:
             type: string
-            length: '64'
+            nullable: false
+            length: 64
+            fixed: false
+            comment: ''
         roles:
             type: string
-            length: '255'
-        #lifecycleCallbacks: {  }
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

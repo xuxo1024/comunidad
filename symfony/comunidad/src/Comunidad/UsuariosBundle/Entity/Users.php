@@ -7,14 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Users
  *
- * @ORM\Table(name="users")
+ * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_1483A5E9E7927C74", columns={"email"})})
  * @ORM\Entity
  */
-
-/**
- * @ORM\Entity(repositoryClass="Comunidad\UsuariosBundle\Repository\UsersRepository")
-*/
-
 class Users
 {
     /**
@@ -39,19 +34,27 @@ class Users
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
+
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
     /**
      * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=64, nullable=false)
      */
     private $salt;
+
     /**
      * @var string
+     *
+     * @ORM\Column(name="roles", type="string", length=255, nullable=false)
      */
-    private $roles = '';
-
+    private $roles;
 
 
 
@@ -127,7 +130,7 @@ class Users
      * Set email
      *
      * @param string $email
-     * @return User
+     * @return Users
      */
     public function setEmail($email)
     {
@@ -145,11 +148,12 @@ class Users
     {
         return $this->email;
     }
+
     /**
      * Set salt
      *
      * @param string $salt
-     * @return User
+     * @return Users
      */
     public function setSalt($salt)
     {
@@ -168,12 +172,26 @@ class Users
         return $this->salt;
     }
 
-    public function getRoles()
+    /**
+     * Set roles
+     *
+     * @param string $roles
+     * @return Users
+     */
+    public function setRoles($roles)
     {
-        return explode(' ', $this->roles);
+        $this->roles = $roles;
+
+        return $this;
     }
 
-    public function eraseCredentials()
+    /**
+     * Get roles
+     *
+     * @return string 
+     */
+    public function getRoles()
     {
+        return $this->roles;
     }
 }

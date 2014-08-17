@@ -7,14 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Messages
  *
- * @ORM\Table(name="messages", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
+ * @ORM\Table(name="messages", indexes={@ORM\Index(name="IDX_DB021E966B3CA4B", columns={"id_user"})})
  * @ORM\Entity
  */
-
-/**
- * @ORM\Entity(repositoryClass="Comunidad\UsuariosBundle\Repository\MessagesRepository")
-*/
-
 class Messages
 {
     /**

@@ -14,6 +14,7 @@ class RegisterUser extends AbstractType
 		$builder 
 			->add('login','text')
 			->add('password','password')
+			->add('email','email')
 			->add('save','submit');
 	}
 
