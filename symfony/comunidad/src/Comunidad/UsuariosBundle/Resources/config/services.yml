@@ -13,3 +13,6 @@ services:
  users.last_users:
   class: Comunidad\UsuariosBundle\Model\LastUsers
   arguments: ["@doctrine.orm.entity_manager"]
+
+ sha256salted_encoder:
+  class: Comunidad\UsuariosBundle\Services\Sha256Salted

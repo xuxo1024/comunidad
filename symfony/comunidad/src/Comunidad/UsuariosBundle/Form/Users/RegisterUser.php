@@ -15,7 +15,9 @@ class RegisterUser extends AbstractType
 			->add('login','text')
 			->add('password','password')
 			->add('email','email')
+			->add('roles','hidden',array('data' => 'ROLE_USER'))
 			->add('save','submit');
+
 	}
 
 

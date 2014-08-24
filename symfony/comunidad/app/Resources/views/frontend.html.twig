@@ -35,6 +35,15 @@
             <li></li>
         </ul-->
     </nav>
+
+        <ul>
+            {% if app.user %}
+                <li><a href="{{ path('logout') }}">{{ 'logout'|trans }}</a></li>
+            {% else %}
+                <li><a href="{{ path('login') }}">{{ 'login'|trans }}</a></li> 
+            {% endif %}
+        </ul>
+
 </header>
  
 <article>

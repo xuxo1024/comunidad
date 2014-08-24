@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Comunidad\UsuariosBundle\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 
 use Comunidad\UsuariosBundle\Form\Users\RegisterUser;
 
@@ -47,22 +48,53 @@ class UsuariosController extends Controller
 
 		$form->handleRequest($request);
 
-		
-
 		if ($form->isValid())
 		{
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($usuario);
-			$em->flush();
-			$logger = $this->get('logger');
-			$logger->info('usuario creado');
+			
+			$salt = uniqid(mt_rand());	
+			$usuario->setSalt($salt);
+			$pass = $form->get('password')->getData();
+			$email = $form->get('email')->getData();
 
-			return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $usuario->getId())));
+			$validateEmail = self::loadUserByEmail($email);
+
+			if ($validateEmail == 1) //validacion de email duplicado
+			{
+				$error = new FormError("Email duplicado");
+				$form->get('email')->addError($error);
+				return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
+			}
+			else
+			{
+				$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
+				$password = $encoder->encodePassword($pass, $salt);
+				$usuario->setPassword($password);
+
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($usuario);
+				$em->flush();
+				$logger = $this->get('logger');
+				$logger->info('usuario creado');
+				return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $usuario->getId()))); 
+			}
+
+			
 		}
 
 		//return array('form'=> $form->createView());
 		return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
 	}
+
+	public function loadUserByEmail($email)
+	{
+
+		$em = $this->getDoctrine()->getManager();
+		$user = $em->getRepository('UsuariosBundle:Users')->findOneBy(array("email" => $email));
+		$valor = ($user) ? 1 : 0 ;
+		return $valor;
+
+	}
+
 
 	public function ShowAction( Request $request)
 	{

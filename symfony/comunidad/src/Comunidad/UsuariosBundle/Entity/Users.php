@@ -194,4 +194,8 @@ class Users
     {
         return $this->roles;
     }
+
+    public function eraseCredentials()
+    {
+    }
 }
