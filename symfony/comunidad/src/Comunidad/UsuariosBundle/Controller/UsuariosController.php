@@ -55,20 +55,35 @@ class UsuariosController extends Controller
 			$usuario->setSalt($salt);
 			$pass = $form->get('password')->getData();
 			$email = $form->get('email')->getData();
+			$login = $form->get('login')->getData();
+			$roles = array('ROLE_USER');
 
 			$validateEmail = self::loadUserByEmail($email);
+			$validateLogin = self::loadUserByLogin($login);
 
 			if ($validateEmail == 1) //validacion de email duplicado
 			{
-				$error = new FormError("Email duplicado");
+				
+				$txt = $this->get('translator')->trans('Duplicated Email');
+				$error = new FormError($txt);
 				$form->get('email')->addError($error);
 				return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
+			}
+			elseif ($validateLogin == 1) 
+			{
+			
+				$txt = $this->get('translator')->trans('Login exists');
+
+				$error = new FormError($txt);
+				$form->get('login')->addError($error);
+				return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));		
 			}
 			else
 			{
 				$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
 				$password = $encoder->encodePassword($pass, $salt);
 				$usuario->setPassword($password);
+				$usuario->setRoles($roles);
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($usuario);
@@ -90,6 +105,17 @@ class UsuariosController extends Controller
 
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository('UsuariosBundle:Users')->findOneBy(array("email" => $email));
+		$valor = ($user) ? 1 : 0 ;
+		return $valor;
+
+	}
+
+
+	public function loadUserByLogin($login)
+	{
+
+		$em = $this->getDoctrine()->getManager();
+		$user = $em->getRepository('UsuariosBundle:Users')->findOneBy(array("login" => $login));
 		$valor = ($user) ? 1 : 0 ;
 		return $valor;
 

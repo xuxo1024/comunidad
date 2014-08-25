@@ -40,9 +40,15 @@ Comunidad\UsuariosBundle\Entity\Users:
             fixed: false
             comment: ''
         roles:
-            type: string
+            type: simple_array
             nullable: false
             length: 255
+            fixed: false
+            comment: ''
+        disabled:
+            type: string
+            nullable: true
+            length: 1
             fixed: false
             comment: ''
     lifecycleCallbacks: {  }

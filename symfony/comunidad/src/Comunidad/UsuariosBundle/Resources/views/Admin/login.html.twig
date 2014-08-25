@@ -1,4 +1,15 @@
-{% if error %}
+{% extends '::frontend.html.twig' %}
+
+{% block title %} 
+    Comunidad test 
+{% endblock %}
+
+{% block id 'login' %}
+ 
+{% block article %} 
+
+    
+ {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}
 
@@ -8,6 +19,7 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="_password" />
+    <input type="hidden" name="_target_path" value="/" />
 
     {#
         Si deseas controlar la URL a la que rediriges al
@@ -16,4 +28,13 @@
     #}
 
     <button type="submit">login</button>
-</form>
+</form>   
+
+
+ {% endblock %}
+ 
+{% block aside %} 
+<div class="lastUsers">{% render controller('UsuariosBundle:Usuarios:lastUsers') %}</div>
+ <div class="lastMsgs">{% render controller('UsuariosBundle:Mensajes:lastMessages') %}</div> 
+  {% endblock %}
+

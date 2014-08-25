@@ -38,6 +38,16 @@
 				<source>User created</source>
 				<target>Usuario creado</target>
 			</trans-unit>
+			<trans-unit id="10">
+				<source>Duplicated Email</source>
+				<target>Email duplicado</target>
+			</trans-unit>
+			<trans-unit id="11">
+				<source>Login exists</source>
+				<target>El login ya existe</target>
+			</trans-unit>
+			
+
 		</body>
 	</file>
 </xliff>

@@ -1,1 +1,19 @@
-Admin
+{% extends '::frontend.html.twig' %}
+
+{% block title %} 
+    Comunidad test 
+{% endblock %}
+
+{% block id 'admin' %}
+ 
+{% block article %} 
+
+ Admin   
+ 
+ {% endblock %}
+ 
+{% block aside %} 
+<div class="lastUsers">{% render controller('UsuariosBundle:Usuarios:lastUsers') %}</div>
+ <div class="lastMsgs">{% render controller('UsuariosBundle:Mensajes:lastMessages') %}</div> 
+  {% endblock %}
+

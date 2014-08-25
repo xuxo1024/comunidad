@@ -56,6 +56,13 @@ class Users
      */
     private $roles;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="disabled", type="string", length=2, nullable=true)
+     */
+    private $disabled;
+
 
 
     /**
@@ -193,6 +200,19 @@ class Users
     public function getRoles()
     {
         return $this->roles;
+    }
+
+
+    public function setDisabled($disabled)
+    {
+        $this->disabled = $disabled;
+        return $this;
+    }
+
+
+    public function getDisabled()
+    {
+        return $this->disabled;
     }
 
     public function eraseCredentials()
