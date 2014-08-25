@@ -3,6 +3,7 @@
 namespace Comunidad\UsuariosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Users
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_1483A5E9E7927C74", columns={"email"})})
  * @ORM\Entity
  */
-class Users
+class Users implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -59,10 +60,18 @@ class Users
     /**
      * @var string
      *
-     * @ORM\Column(name="disabled", type="string", length=2, nullable=true)
+     * @ORM\Column(name="active", type="string", length=2, nullable=true)
      */
-    private $disabled;
+    private $active;
 
+
+
+      public function __construct()
+    {
+        $this->active = false;
+        // may not be needed, see section on salt below
+        $this->salt = md5(uniqid(null, true));
+    }
 
 
     /**
@@ -203,19 +212,78 @@ class Users
     }
 
 
-    public function setDisabled($disabled)
+    public function setactive($active)
     {
-        $this->disabled = $disabled;
+        $this->active = $active;
         return $this;
     }
 
 
-    public function getDisabled()
+    public function getactive()
     {
-        return $this->disabled;
+        return $this->active;
     }
 
     public function eraseCredentials()
     {
     }
+
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->login;
+    }
+
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->login,
+            $this->password,
+            // see section on salt below
+            $this->salt
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->login,
+            $this->password,
+            // see section on salt below
+            $this->salt
+        ) = unserialize($serialized);
+    }
+
+
+    public function isEnabled()
+    {
+        return $this->active;
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+
 }

@@ -15,6 +15,7 @@ class RegisterUser extends AbstractType
 			->add('login','text')
 			->add('password','password')
 			->add('email','email')
+			->add('active','checkbox', array('required' => false , 'attr' => array('checked' => 'checked')))
 			->add('save','submit');
 
 	}

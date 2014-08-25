@@ -45,10 +45,6 @@ Comunidad\UsuariosBundle\Entity\Users:
             length: 255
             fixed: false
             comment: ''
-        disabled:
-            type: string
-            nullable: true
-            length: 1
-            fixed: false
-            comment: ''
+        active:
+            type: boolean
     lifecycleCallbacks: {  }

@@ -18,6 +18,11 @@ class AdminController extends Controller
         $request = $this->getRequest();
         $session = $request->getSession();
 
+         $logger = $this->get('logger');
+         $logger->info($this->getRequest());
+        
+
+
         // obtiene el error de inicio de sesión si lo hay
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(
