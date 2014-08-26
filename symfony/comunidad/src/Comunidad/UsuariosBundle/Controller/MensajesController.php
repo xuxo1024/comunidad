@@ -84,7 +84,7 @@ class MensajesController extends Controller
 
 	public function ShowAction( Request $request)
 	{
-			return $this->render('UsuariosBundle:Usuarios:exito.html.twig');
+			return $this->render('UsuariosBundle:Mensajes:exito.html.twig');
 	}
 
 	public function EditAction( $id, Request $request )

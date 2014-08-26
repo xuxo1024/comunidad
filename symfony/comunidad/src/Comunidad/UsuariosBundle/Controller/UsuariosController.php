@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormError;
 use Comunidad\UsuariosBundle\Form\Users\RegisterUser;
 
 
+
 class UsuariosController extends Controller
 {
 	/**
@@ -69,21 +70,24 @@ class UsuariosController extends Controller
 				$form->get('email')->addError($error);
 				return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
 			}
-			elseif ($validateLogin == 1) 
+			elseif ($validateLogin == 1) //validacion de login duplicado
 			{
 			
 				$txt = $this->get('translator')->trans('Login exists');
-
 				$error = new FormError($txt);
 				$form->get('login')->addError($error);
 				return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));		
 			}
 			else
 			{
+				//codificamos la contraseña
 				$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
-				$password = $encoder->encodePassword($pass, $salt);
+				$password = Users::getEncodedPassword($pass,$encoder,$salt);
 				$usuario->setPassword($password);
+				//asignamos el rol correspondiente
 				$usuario->setRoles($roles);
+				//lo marcamos como activo
+				$usuario->setActive(1);
 
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($usuario);
@@ -95,8 +99,6 @@ class UsuariosController extends Controller
 
 			
 		}
-
-		//return array('form'=> $form->createView());
 		return $this->render('UsuariosBundle:Usuarios:create.html.twig', array('form' => $form->createView()));
 	}
 
@@ -148,6 +150,12 @@ class UsuariosController extends Controller
 
     	if ($form->isValid())
 		{
+			
+			$pass = $form->get('password')->getData();
+			$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
+			$password = Users::getEncodedPassword($pass,$encoder,$usuario->getSalt());
+			$usuario->setPassword($password);
+
 			$em->flush();
 			$logger = $this->get('logger');
 			$logger->info('edicion usuario:'.$id);

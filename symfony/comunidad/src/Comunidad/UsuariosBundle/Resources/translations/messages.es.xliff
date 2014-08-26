@@ -46,8 +46,10 @@
 				<source>Login exists</source>
 				<target>El login ya existe</target>
 			</trans-unit>
-			
-
+			<trans-unit id="12">
+				<source>Message modified</source>
+				<target>Mensaje Modificado</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

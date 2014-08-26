@@ -7,7 +7,7 @@ recetas:
     requirements : 
      _locale: en|es
 recetas_seo:
-    pattern: /{_locale}//recetas/{name}
+    pattern: /{_locale}/recetas/{name}
     defaults: { _controller: UsuariosBundle:Recipe:showname }
     requirements : 
      _locale: en|es
@@ -31,7 +31,7 @@ usuarios_create_show:
     requirements : 
      _locale: en|es
 usuarios_edit:
-    pattern: /{_locale}/usuarios/editar/{id}
+    pattern: /admin/usuarios/editar/{id}
     defaults: {_controller:UsuariosBundle:Usuarios:edit}
     requirements : 
      _locale: en|es
@@ -61,6 +61,10 @@ usuarios_mensaje_edit:
 
 admin:
     pattern: /admin
+    defaults: {_controller:UsuariosBundle:Admin:index}
+
+_admin:
+    pattern: /admin/
     defaults: {_controller:UsuariosBundle:Admin:index}
 
 registro:

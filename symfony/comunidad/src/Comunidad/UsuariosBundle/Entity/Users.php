@@ -5,6 +5,8 @@ namespace Comunidad\UsuariosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
+use Symfony\Component\Yaml\Parser;
+
 /**
  * Users
  *
@@ -212,14 +214,14 @@ class Users implements AdvancedUserInterface, \Serializable
     }
 
 
-    public function setactive($active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;
     }
 
 
-    public function getactive()
+    public function getActive()
     {
         return $this->active;
     }
@@ -285,5 +287,39 @@ class Users implements AdvancedUserInterface, \Serializable
         return true;
     }
 
+
+    static function getRoleNames()
+    {
+        $pathToSecurity = __DIR__ . '/../../../..' . '/app/config/security.yml';
+        $yaml = new Parser();
+        $rolesArray = $yaml->parse(file_get_contents($pathToSecurity));
+        $arrayKeys = array();
+        foreach ($rolesArray['security']['role_hierarchy'] as $key => $value)
+        {
+            //never allow assigning super admin
+            if ($key != 'ROLE_SUPER_ADMIN')
+                $arrayKeys[$key] = self::convertRoleToLabel($key);
+            //skip values that are arrays --- roles with multiple sub-roles
+            if (!is_array($value))
+                if ($value != 'ROLE_SUPER_ADMIN')
+                    $arrayKeys[$value] = self::convertRoleToLabel($value);
+        }
+        //sort for display purposes
+        asort($arrayKeys);
+        return $arrayKeys;
+    }
+
+    static private function convertRoleToLabel($role)
+    {
+        $roleDisplay = str_replace('ROLE_', '', $role);
+        $roleDisplay = str_replace('_', ' ', $roleDisplay);
+        return ucwords(strtolower($roleDisplay));
+    }
+
+
+    static function getEncodedPassword($pass,$encoder,$salt)
+    {
+        return $encoder->encodePassword($pass, $salt);
+    }
 
 }

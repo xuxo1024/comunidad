@@ -33,6 +33,21 @@
 		{{form_widget(form.email)}}
 		</li>
 
+		{% if app.user %}
+
+			<li>
+				{{form_label(form.roles)}}
+				{{form_errors(form.roles)}}
+				{{form_widget(form.roles)}}
+			</li>
+
+			<li>
+				{{form_label(form.active)}}
+				{{form_errors(form.active)}}
+				{{form_widget(form.active)}}
+			</li>
+		{% endif %}
+
 
 		<li>{{form_widget(form.save)}}</li>
 
