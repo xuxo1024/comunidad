@@ -1,15 +1,15 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Controller;
+namespace Comunidad\MensajesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Comunidad\UsuariosBundle\Entity\Messages;
+use Comunidad\MensajesBundle\Entity\Messages;
 use Comunidad\UsuariosBundle\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 
-use Comunidad\UsuariosBundle\Form\Users\MesaggesType;
+use Comunidad\MensajesBundle\Form\Users\MesaggesType;
 
 class MensajesController extends Controller
 {
@@ -31,12 +31,12 @@ class MensajesController extends Controller
 	{
 
 		$em = $this->getDoctrine()->getManager();
-		$listado = $em->getRepository('UsuariosBundle:Messages')->findAll();
+		$listado = $em->getRepository('MensajesBundle:Messages')->findAll();
 
 			$logger = $this->get('logger');
 			$logger->info('listado Mensajes');
 
-		return $this->render('UsuariosBundle:Mensajes:listado.html.twig',array('listado'=>$listado));	
+		return $this->render('MensajesBundle:Mensajes:listado.html.twig',array('listado'=>$listado));	
 	}
 
 	public function CreateAction( Request $request)
@@ -47,7 +47,7 @@ class MensajesController extends Controller
 		//TODO
 		//cambiar datos en función del usuario conectado.		
 		$em = $this->getDoctrine()->getManager();
-		$usuario = $em->getRepository('UsuariosBundle:Users')->find(1);
+		$usuario = $em->getRepository('MensajesBundle:Users')->find(1);
 		$mensaje->setIdUser($usuario->setId(1));
 
 
@@ -76,7 +76,7 @@ class MensajesController extends Controller
 
 
 		//return array('form'=> $form->createView());
-		return $this->render('UsuariosBundle:Mensajes:create.html.twig', array('form' => $form->createView()));
+		return $this->render('MensajesBundle:Mensajes:create.html.twig', array('form' => $form->createView()));
 		
 
 		
@@ -84,14 +84,14 @@ class MensajesController extends Controller
 
 	public function ShowAction( Request $request)
 	{
-			return $this->render('UsuariosBundle:Mensajes:exito.html.twig');
+			return $this->render('MensajesBundle:Mensajes:exito.html.twig');
 	}
 
 	public function EditAction( $id, Request $request )
 	{
 		
 		$em = $this->getDoctrine()->getManager();
-		$mensaje = $em->getRepository('UsuariosBundle:Messages')->find($id);
+		$mensaje = $em->getRepository('MensajesBundle:Messages')->find($id);
 
 		if (!$mensaje) {
 			$logger = $this->get('logger');
@@ -110,10 +110,10 @@ class MensajesController extends Controller
 			$em->flush();
 			$logger = $this->get('logger');
 			$logger->info('edicion mensaje:'.$id);
-			return $this->render('UsuariosBundle:Mensajes:exito.html.twig');
+			return $this->render('MensajesBundle:Mensajes:exito.html.twig');
 		}
 
 		$build['form'] = $form->createView();
-		return $this->render('UsuariosBundle:Mensajes:create.html.twig', $build);
+		return $this->render('MensajesBundle:Mensajes:create.html.twig', $build);
 	}
 }

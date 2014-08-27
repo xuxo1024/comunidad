@@ -1,6 +1,6 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Entity;
+namespace Comunidad\MensajesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,10 +35,18 @@ class Messages
      */
     private $message;
 
+
     /**
-     * @var \Comunidad\UsuariosBundle\Entity\Users
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Comunidad\UsuariosBundle\Entity\Users")
+     * @ORM\Column(name="message", type="text", nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var \Comunidad\MensajesBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Comunidad\MensajesBundle\Entity\Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -103,13 +111,39 @@ class Messages
         return $this->message;
     }
 
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+
+    /**
+     * Set title
+     *
+     * @param string $message
+     * @return Title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+
     /**
      * Set idUser
      *
-     * @param \Comunidad\UsuariosBundle\Entity\Users $idUser
+     * @param \Comunidad\MensajesBundle\Entity\Users $idUser
      * @return Messages
      */
-    public function setIdUser(\Comunidad\UsuariosBundle\Entity\Users $idUser = null)
+    public function setIdUser(\Comunidad\MensajesBundle\Entity\Users $idUser = null)
     {
         $this->idUser = $idUser;
 
@@ -119,7 +153,7 @@ class Messages
     /**
      * Get idUser
      *
-     * @return \Comunidad\UsuariosBundle\Entity\Users 
+     * @return \Comunidad\MensajesBundle\Entity\Users 
      */
     public function getIdUser()
     {

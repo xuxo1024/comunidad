@@ -1,4 +1,4 @@
-Comunidad\UsuariosBundle\Entity\Messages:
+Comunidad\MensajesBundle\Entity\Messages:
     type: entity
     table: messages
     indexes:
@@ -27,6 +27,12 @@ Comunidad\UsuariosBundle\Entity\Messages:
             length: null
             fixed: false
             comment: ''
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''    
     manyToOne:
         idUser:
             targetEntity: Users

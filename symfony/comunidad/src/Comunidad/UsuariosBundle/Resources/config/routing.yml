@@ -41,24 +41,6 @@ usuarios_listado:
     requirements : 
      _locale: en|es
 
-
-
-usuarios_mensaje_listar:
-    pattern: /{_locale}/mensaje/listado
-    defaults: {_controller:UsuariosBundle:Mensajes:listado}
-    requirements : 
-     _locale: en|es
-usuarios_mensaje_create:
-    pattern: /{_locale}/mensaje/nuevo
-    defaults: {_controller:UsuariosBundle:Mensajes:create}
-    requirements : 
-     _locale: en|es
-usuarios_mensaje_edit:
-    pattern: /{_locale}/mensaje/editar/{id}
-    defaults: {_controller:UsuariosBundle:Mensajes:edit}
-    requirements : 
-     _locale: en|es
-
 admin:
     pattern: /admin
     defaults: {_controller:UsuariosBundle:Admin:index}

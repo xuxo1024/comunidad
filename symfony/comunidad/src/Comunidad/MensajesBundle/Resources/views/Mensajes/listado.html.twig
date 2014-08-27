@@ -9,7 +9,7 @@
 {% block article %} 
 	<ul>
 {% for items in listado %}
-	<li> <a href="{{ path('usuarios_mensaje_edit',{'id':items.id})}}">{{ items.message|e }} </a></li>
+	<li> <a href="{{ path('usuarios_mensaje_edit',{'id':items.id})}}">{{ items.title|e }} </a></li>
 {% endfor %}
 	</ul>
 	

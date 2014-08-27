@@ -1,6 +1,6 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Model;
+namespace Comunidad\MensajesBundle\Model;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -11,7 +11,7 @@ Class LastMessages
 
 	public function __construc(ObjectManager $om)
 	{
-		$this->repository = $om->getRepository('UsuariosBundle:Messages');
+		$this->repository = $om->getRepository('MensajesBundle:Messages');
 	}
 
 	public function findFrom(\Datetime $from_date)

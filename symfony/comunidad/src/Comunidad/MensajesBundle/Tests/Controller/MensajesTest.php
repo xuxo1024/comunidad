@@ -1,6 +1,6 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Tests\Controller;
+namespace Comunidad\MensajesBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Repository;
+namespace Comunidad\MensajesBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

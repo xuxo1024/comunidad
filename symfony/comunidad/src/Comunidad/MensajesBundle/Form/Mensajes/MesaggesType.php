@@ -1,6 +1,6 @@
 <?php
 
-namespace Comunidad\UsuariosBundle\Form\Users;
+namespace Comunidad\MensajesBundle\Form\Users;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,11 +17,11 @@ class MesaggesType extends AbstractType
 			
 			->add('to_user', 'entity', array(
 					'mapped' => false,
-					'class' => 'UsuariosBundle:Users',
+					'class' => 'MensajesBundle:Users',
 					'property' => 'login'))
 			
 				
-			//->add('to_user', 'number')
+			->add('title', 'text')
 			->add('message','textarea')
 			->add('save','submit');
 	}
