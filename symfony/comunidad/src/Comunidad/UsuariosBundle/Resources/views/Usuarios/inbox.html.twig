@@ -1,0 +1,29 @@
+{% extends '::frontend.html.twig' %}
+ 
+{% block title %} 
+	{% trans %}Inbox{% endtrans %}
+{% endblock %}
+
+{% block id 'ayuda' %}
+ 
+{% block article %} 
+
+		<ul>
+{#% for items in listado %}
+	{% if app.user %}
+		<li> <a href="{{ path('usuarios_edit',{'id':items.id})}}">{{ items.login|e }} </a></li>
+	{% else %}
+		<li>{{ items.login|e }}</li>
+	{% endif %}
+{% endfor %#}
+	</ul>
+
+{% endblock %}
+ 
+{% block aside %} 
+
+<ul>
+	<li>{% trans %}Inbox{% endtrans %}</li>
+	<li><a href="{{ path('usuarios_mensaje_send',{'id':items.id})}}"> {% trans %}Send{% endtrans %} </a></li>
+</ul>
+{% endblock %}

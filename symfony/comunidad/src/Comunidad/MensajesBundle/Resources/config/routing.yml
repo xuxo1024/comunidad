@@ -6,6 +6,11 @@ usuarios_mensaje_listar:
     defaults: {_controller:MensajesBundle:Mensajes:listado}
     requirements : 
      _locale: en|es
+
+usuarios_mensaje_send:
+    pattern: /mensaje/listado/{id}
+    defaults: {_controller:MensajesBundle:Mensajes:send}
+    
 usuarios_mensaje_create:
     pattern: /{_locale}/mensaje/nuevo
     defaults: {_controller:MensajesBundle:Mensajes:create}

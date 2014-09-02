@@ -19,7 +19,7 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="_password" />
-    <input type="hidden" name="_target_path" value="/" />
+    <input type="hidden" name="_target_path" value="/usuarios/inbox" />
 
     {#
         Si deseas controlar la URL a la que rediriges al
@@ -34,7 +34,8 @@
  {% endblock %}
  
 {% block aside %} 
-<div class="lastUsers">{% render controller('UsuariosBundle:Usuarios:lastUsers') %}</div>
+{# <div class="lastUsers">{% render controller('UsuariosBundle:Usuarios:lastUsers') %}</div>
  <div class="lastMsgs">{% render controller('UsuariosBundle:Mensajes:lastMessages') %}</div> 
+ #}
   {% endblock %}
 

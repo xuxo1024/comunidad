@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Comunidad\MensajesBundle\Entity\Messages;
 use Comunidad\UsuariosBundle\Entity\Users;
+
+
 use Symfony\Component\HttpFoundation\Request;
 
 use Comunidad\MensajesBundle\Form\Users\MesaggesType;
@@ -42,7 +44,7 @@ class MensajesController extends Controller
 	public function CreateAction( Request $request)
 	{
 		$mensaje = new Messages;
-		$usuario = new Users();
+		$usuario = new \Comunidad\UsuariosBundle\Entity\Users\Users();
 
 		//TODO
 		//cambiar datos en función del usuario conectado.		
@@ -70,12 +72,8 @@ class MensajesController extends Controller
 			$logger = $this->get('logger');
 			$logger->info('mensaje creado');
 
-			return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $mensaje->getId())));
+			//return $this->redirect($this->generateUrl('usuarios_create_show',array('id' => $mensaje->getId())));
 		}
-
-
-
-		//return array('form'=> $form->createView());
 		return $this->render('MensajesBundle:Mensajes:create.html.twig', array('form' => $form->createView()));
 		
 

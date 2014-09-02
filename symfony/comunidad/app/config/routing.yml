@@ -1,3 +1,7 @@
+comunidad_mensajes:
+    resource: "@MensajesBundle/Resources/config/routing.yml"
+    prefix:   /
+
 usuarios:
     resource: "@UsuariosBundle/Resources/config/routing.yml"
     prefix:   /

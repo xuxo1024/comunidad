@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="messages", indexes={@ORM\Index(name="IDX_DB021E966B3CA4B", columns={"id_user"})})
  * @ORM\Entity
  */
-class Messages
+class Messages 
 {
     /**
      * @var integer
@@ -44,9 +44,9 @@ class Messages
     private $title;
 
     /**
-     * @var \Comunidad\MensajesBundle\Entity\Users
+     * @var \Comunidad\UsuariosBundle\Entity\Users
      *
-     * @ORM\ManyToOne(targetEntity="Comunidad\MensajesBundle\Entity\Users")
+     * @ORM\ManyToOne(targetEntity="Comunidad\UsuariosBundle\Entity\Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -140,10 +140,10 @@ class Messages
     /**
      * Set idUser
      *
-     * @param \Comunidad\MensajesBundle\Entity\Users $idUser
+     * @param \Comunidad\UsuariosBundle\Entity\Users $idUser
      * @return Messages
      */
-    public function setIdUser(\Comunidad\MensajesBundle\Entity\Users $idUser = null)
+    public function setIdUser(\Comunidad\UsuariosBundle\Entity\Users $idUser = null)
     {
         $this->idUser = $idUser;
 

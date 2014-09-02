@@ -41,6 +41,17 @@ usuarios_listado:
     requirements : 
      _locale: en|es
 
+usuarios_inbox:
+    pattern: /{_locale}/usuarios/inbox
+    defaults: {_controller:UsuariosBundle:Usuarios:inbox}
+    requirements : 
+     _locale: en|es
+
+_usuarios_inbox:
+    pattern: /usuarios/inbox
+    defaults: {_controller:UsuariosBundle:Usuarios:inbox}
+    
+
 admin:
     pattern: /admin
     defaults: {_controller:UsuariosBundle:Admin:index}
