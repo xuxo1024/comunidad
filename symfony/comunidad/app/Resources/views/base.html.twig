@@ -1,20 +1,89 @@
-{# app/Resources/views/base.html.twig #}
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} | Comunidad Test</title>
-    {% block stylesheets %}{% endblock %}
-</head>
- 
-<body id="{% block id '' %}"><div id="contenedor">
-    {% block body %}{% endblock %}
- 
-    <footer>
-        {% block footer %}{% endblock %}
-    </footer>
- 
-    {% block javascripts %}{% endblock %}
-</div></body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+        <title>{% block title %}symblog{% endblock %} - symblog</title>
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% block stylesheets %}
+            <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
+            {% stylesheets 
+                'css/*'
+                filter='?yui_css'
+            %}
+                <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        <section id="wrapper">
+            <header id="header">
+                <div class="top">
+                    {% block navigation %}
+                        <nav>
+
+                            <ul class="lang-menu">
+                                {% if app.request.locale == 'en' %}
+                                <li><a href="{{ path('BloggerBlogBundle_homepage') }}">Español</a></li>
+                                {% endif %}
+
+                                 {% if app.request.locale == 'es' %}
+                                <li><a href="{{ path('BloggerBlogBundle_homepage') }}en">English</a></li>
+                                {% endif %}
+
+                                </ul>
+
+                            <ul class="navigation">
+                                <li><a href="{{ path('BloggerBlogBundle_homepage') }}">{{ 'Home'|trans }}</a></li>
+                                <li><a href="{{ path('BloggerBlogBundle_about') }}">{{ 'About'|trans }}</a></li>
+                                <li><a href="{{ path('BloggerBlogBundle_contact') }}">{{ 'Contact'|trans }}</a></li>
+
+                                {% if app.user %}
+
+                                {% if app.user.granted("ROLE_ADMIN") %}
+                                 <li><a href="{{ path('admin') }}">{{ 'Admin'|trans }}</a></li>
+                                 {% endif %}    
+
+                                <li><a href="{{ path('logout') }}">{{ 'Logout'|trans }}</a></li>
+                                {% else %}
+                                <li><a href="{{ path('login') }}">{{ 'Login'|trans }}</a></li>
+                                <li><a href="{{ path('registro') }}">{{ 'Register'|trans }}</a></li>
+                                {% endif %}
+
+
+                            </ul>
+                            {% if app.user %}
+                            <div>{{ 'Welcome'|trans }}, {{ app.user.username }}</div>
+                            {% endif %}
+                        </nav>
+                    {% endblock %}
+                </div>
+
+                <hgroup>
+                    <h2>{% block blog_title %}<a href="{{ path('BloggerBlogBundle_homepage') }}">symblog</a>{% endblock %}</h2>
+                    <h3>{% block blog_tagline %}<a href="{{ path('BloggerBlogBundle_homepage') }}">creating a blog in Symfony2</a>{% endblock %}</h3>
+                </hgroup>
+            </header>
+
+            <section class="main-col">
+                {% block body %}{% endblock %}
+            </section>
+            <aside class="sidebar">
+                {% block sidebar %}{% endblock %}
+            </aside>
+
+            <div id="footer">
+                {% block footer %}
+                    Symfony2 blog tutorial - created by <a href="https://github.com/dsyph3r">dsyph3r</a>
+                {% endblock %}
+            </div>
+        </section>
+
+        {% block javascripts %}{% endblock %}
+    </body>
 </html>
+

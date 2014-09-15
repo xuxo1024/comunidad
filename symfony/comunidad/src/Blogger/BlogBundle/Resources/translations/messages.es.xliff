@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="file.ext">
+		<body>
+			<trans-unit id="1">
+				<source>Home</source>
+				<target>Home</target>
+			</trans-unit>
+			<trans-unit id="2">
+				<source>About</source>
+				<target>Acerca de</target>
+			</trans-unit>
+			<trans-unit id="3">
+				<source>Contact</source>
+				<target>Contacto</target>
+			</trans-unit>
+			<trans-unit id="4">
+				<source>Continue reading</source>
+				<target>Continua leyendo</target>
+			</trans-unit>
+			<trans-unit id="5">
+				<source>There are no blog entries for symblog</source>
+				<target>No hay entradas</target>
+			</trans-unit>
+			<trans-unit id="6">
+				<source>Comments</source>
+				<target>Comentarios</target>
+			</trans-unit>
+			<trans-unit id="7">
+				<source>Posted by</source>
+				<target>Publicado por</target>
+			</trans-unit>
+			<trans-unit id="8">
+				<source>Tags</source>
+				<target>Etiquetas</target>
+			</trans-unit>
+			<trans-unit id="9">
+				<source>at</source>
+				<target>a las</target>
+			</trans-unit>
+			<trans-unit id="10">
+				<source>Tag Cloud</source>
+				<target>Nube de etiquetas</target>
+			</trans-unit>
+			<trans-unit id="11">
+				<source>Latest Comments</source>
+				<target>Últimos comentarios</target>
+			</trans-unit>
+			<trans-unit id="12">
+				<source>There are no recent comments</source>
+				<target>No hay comentarios recientes</target>
+			</trans-unit>
+			<trans-unit id="13">
+				<source>commented on</source>
+				<target>comentó en</target>
+			</trans-unit>
+			<trans-unit id="14">
+				<source>ago</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="15">
+				<source>second</source>
+				<target>segundo</target>
+			</trans-unit>
+			<trans-unit id="16">
+				<source>minute</source>
+				<target>minuto</target>
+			</trans-unit>
+			<trans-unit id="17">
+				<source>hour</source>
+				<target>hora</target>
+			</trans-unit>
+			<trans-unit id="18">
+				<source>day</source>
+				<target>dia</target>
+			</trans-unit>
+			<trans-unit id="19">
+				<source>Want to contact</source>
+				<target>Quiero contactar con</target>
+			</trans-unit>
+			<trans-unit id="20">
+				<source>Add Comment</source>
+				<target>Añadir Comentario</target>
+			</trans-unit>
+			<trans-unit id="21">
+				<source>Add comment for blog post</source>
+				<target>Añadir Comentario</target>
+			</trans-unit>
+			<trans-unit id="22">
+				<source>Submit</source>
+				<target>Enviar</target>
+			</trans-unit>
+			<trans-unit id="23">
+				<source>There are no comments for this post. Be the first to comment</source>
+				<target>No hay comentarios para este posr, se el primero en comentar</target>
+			</trans-unit>
+			<trans-unit id="24">
+				<source>User</source>
+				<target>Usuario</target>
+			</trans-unit>
+			<trans-unit id="25">
+				<source>Comment</source>
+				<target>Comentario</target>
+			</trans-unit>
+			<trans-unit id="26">
+				<source>Name</source>
+				<target>Nombre</target>
+			</trans-unit>
+			<trans-unit id="27">
+				<source>Subject</source>
+				<target>Asunto</target>
+			</trans-unit>
+			<trans-unit id="28">
+				<source>Body</source>
+				<target>Cuerpo</target>
+			</trans-unit>
+			<trans-unit id="29">
+				<source>commented</source>
+				<target>comentado</target>
+			</trans-unit>	
+		</body>
+	</file>
+</xliff>

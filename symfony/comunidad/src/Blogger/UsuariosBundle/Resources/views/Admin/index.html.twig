@@ -1,0 +1,48 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Admin{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Admin</h1>
+    </header>
+    <article>
+        <ul class="adminUsers">
+        	<li>
+        		Usuarios
+        		<ul>
+        			<li><a href="{{ path('usuarios_listado') }}">Listado de usuarios</a></li>
+        		</ul>
+        	</li>	
+        </ul>
+
+        <ul class="adminUsers">
+        	<li>
+        		Blogs
+        		<ul>
+        			<li><a href="{{ app.request.getBaseURL() }}/admin/blog">Listado de Blogs</a></li>
+        		</ul>
+        	</li>	
+        </ul>
+
+        <ul class="adminUsers">
+        	<li>
+        		Comentarios
+        		<ul>
+        			<li><a href="{{ app.request.getBaseURL() }}/admin/comment">Listado de Comentarios</a></li>
+        		</ul>
+        	</li>	
+        </ul>
+
+        <ul class="adminUsers">
+        	<li>
+        		Etiquetas
+        		<ul>
+        			<li><a href="#">Listado de Etiquetas</a></li>
+        		</ul>
+        	</li>	
+        </ul>
+
+
+    </article>
+{% endblock %}

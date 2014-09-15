@@ -1,0 +1,28 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Login{% endblock%}
+
+
+{% block body %}
+    <header>
+        <h1>Login</h1>
+    </header>
+
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('login_check') }}" method="post" class="blogger">
+    <label for="username">{{ 'Username'|trans }}:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+    <label for="password">{{ 'Password'|trans }}:</label>
+    <input type="password" id="password" name="_password" />
+    <input type="hidden" name="_target_path" value="/" />
+
+    
+    <button type="submit">{{ 'login'|trans }}</button>
+</form>   
+    
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+
+{% block title %}Admin{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Listado de usuarios</h1>
+    </header>
+    <article>
+        <ul class="adminUsers">
+
+     {% for items in listado %}
+		<li> <a href="{{ path('usuarios_edit',{'id':items.id})}}">{{ items.login|e }} </a></li>
+	{% endfor %}
+        	
+        </ul>
+</article>
+{% endblock %}
+
+ 
+{#% block title %} 
+	{% trans %}Users list{% endtrans %}
+{% endblock %}
+
+{% block id 'ayuda' %}
+ 
+{% block article %} 
+
+	<ul>
+{% for items in listado %}
+	
+	{% if app.user %}
+		<li> <a href="{{ path('usuarios_edit',{'id':items.id})}}">{{ items.login|e }} </a></li>
+	{% else %}
+		<li>{{ items.login|e }}</li>
+	{% endif %}
+
+
+{% endfor %}
+	</ul>
+
+	
+
+{% endblock %}
+ 
+{% block aside %} bloque lado {% endblock %#}

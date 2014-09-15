@@ -1,0 +1,32 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for blog in pagination %}
+        <article class="blog">
+            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|localizeddate('full', 'none', app.request.locale )}}</time></div>
+            <header>
+                <h2><a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">{{ blog.title }}</a></h2>
+            </header>
+
+            <img src="{{ asset(['images/', blog.image]|join) }}" />
+            <div class="snippet">
+                <p>{{ blog.blog(500) }}</p>
+                <p class="continue"><a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">{{ 'Continue reading'|trans }}...</a></p>
+            </div>
+
+            <footer class="meta">
+                <p>{{ 'Comments'|trans }}: <a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}#comments">{{ blog.comments|length }}</a></p>
+                <p>{{ 'Posted by'|trans }} <span class="highlight">{{ blog.author }}</span> {{ 'at'|trans }}  {{ blog.created|date('H:iA') }}</p>
+                <p>{{ 'Tags'|trans }}: <span class="highlight">{{ blog.tags }}</span></p>
+            </footer>
+        </article>
+    {% else %}
+        <p>{{ 'There are no blog entries for symblog'|trans }}</p>
+    {% endfor %}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+    
+{% endblock %}
+

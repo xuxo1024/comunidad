@@ -1,0 +1,40 @@
+Blogger\UsuariosBundle\Entity\Messages:
+    type: entity
+    table: messages
+    indexes:
+        IDX_DB021E966B3CA4B:
+            columns:
+                - id_user
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        toUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: to_user
+        message:
+            type: blob
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        idUser:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+Blogger\UsuariosBundle\Entity\Users:
+    type: entity
+    table: users
+    uniqueConstraints:
+        UNIQ_1483A5E9E7927C74:
+            columns:
+                - email
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        login:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        salt:
+            type: string
+            nullable: false
+            length: 64
+            fixed: false
+            comment: ''
+        roles:
+            type: simple_array
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        active:
+            type: boolean
+    lifecycleCallbacks: {  }

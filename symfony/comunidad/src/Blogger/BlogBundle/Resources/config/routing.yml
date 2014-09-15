@@ -1,0 +1,67 @@
+BloggerBlogBundle_homepage:
+    pattern:  /
+    defaults: { _controller: BloggerBlogBundle:Page:index }
+    requirements:
+        _method:  GET
+
+_BloggerBlogBundle_homepage:
+    pattern:  /{_locale}
+    defaults: { _controller: BloggerBlogBundle:Page:index }
+    requirements:
+        _method:  GET
+        _locale: en|es
+        
+BloggerBlogBundle_about:
+    pattern:  /{_locale}/about
+    defaults: { _controller: BloggerBlogBundle:Page:about }
+    requirements:
+        _method:  GET
+        _locale: en|es
+        
+BloggerBlogBundle_sidebar:
+    pattern:  /{_locale}/sidebar
+    defaults: { _controller: BloggerBlogBundle:Page:sidebar }
+    requirements:
+        _method:  GET
+        _locale: en|es
+        
+BloggerBlogBundle_contact:
+    pattern:  /{_locale}/contact
+    defaults: { _controller: BloggerBlogBundle:Page:contact }
+    requirements:
+        _method:  GET|POST
+        _locale: en|es
+        
+BloggerBlogBundle_blog_show:
+    pattern:  /{_locale}/{id}/{slug}
+    defaults: { _controller: BloggerBlogBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
+        _locale: en|es
+
+BloggerBlogBundle_comment_new:
+    pattern:  /{_locale}/new/{blog_id}
+    defaults: { _controller: BloggerBlogBundle:Comment:new }
+    requirements:
+        _method:  GET
+        blog_id: \d+
+        _locale: en|es
+
+BloggerBlogBundle_comment_create:
+    pattern:  /{_locale}/comment/{blog_id}
+    defaults: { _controller: BloggerBlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+
+        _locale: en|es
+
+#admin
+
+BloggerBlogBundle_blog:
+    resource: "@BloggerBlogBundle/Resources/config/routing/blog.yml"
+    prefix:   /admin/blog
+
+BloggerBlogBundle_comment:
+    resource: "@BloggerBlogBundle/Resources/config/routing/comment.yml"
+    prefix:   /admin/comment

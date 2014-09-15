@@ -1,0 +1,30 @@
+comment:
+    path:     /
+    defaults: { _controller: "BloggerBlogBundle:Comment:indexAdmin" }
+
+comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "BloggerBlogBundle:Comment:showAdmin" }
+
+comment_new:
+    path:     /new
+    defaults: { _controller: "BloggerBlogBundle:Comment:newAdmin" }
+
+comment_create:
+    path:     /create
+    defaults: { _controller: "BloggerBlogBundle:Comment:createAdmin" }
+    requirements: { _method: post }
+
+comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BloggerBlogBundle:Comment:editAdmin" }
+
+comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "BloggerBlogBundle:Comment:updateAdmin" }
+    requirements: { _method: post|put }
+
+comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BloggerBlogBundle:Comment:deleteAdmin" }
+    requirements: { _method: post|delete }

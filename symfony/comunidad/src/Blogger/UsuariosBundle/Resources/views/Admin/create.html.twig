@@ -1,0 +1,29 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ 'Register'|trans }}{% endblock%}
+
+
+{% block body %}
+    <header>
+        <h1>{{ 'Register user'|trans }}</h1>
+    </header>
+
+    <form action="{{ path('registro') }}" method="post" {{ form_enctype(form) }} class="blogger">
+
+    {{ form_errors(form) }}
+
+    {{ form_row(form._token) }}
+
+    {{ form_row(form.login) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.active) }}
+        
+
+        <input type="submit" value="{{ 'Submit'|trans }}" />	
+
+    </form>
+
+{% endblock %}

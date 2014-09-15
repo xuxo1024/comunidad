@@ -1,0 +1,30 @@
+parameters:
+#    usuarios.example.class: Blogger\UsuariosBundle\Example
+
+services:
+#    usuarios.example:
+#        class: %usuarios.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#        
+ my_messages.last_messages:
+  class: Blogger\UsuariosBundle\Model\LastMessages
+  arguments: ["@doctrine.orm.entity_manager"]
+
+ users.last_users:
+  class: Blogger\UsuariosBundle\Model\LastUsers
+  arguments: ["@doctrine.orm.entity_manager"]
+
+ sha256salted_encoder:
+  class: Blogger\UsuariosBundle\Services\Sha256Salted
+
+ #access_listener:
+ #   class: Blogger\UsuariosBundle\Listener\AccessListener
+ #   arguments: [ @security.context, @router ]
+ #   tags:
+ #     - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+ #blog_locale.locale_listener:
+ #       class: Blogger\UsuariosBundle\Listener\LocaleListener
+ #       arguments: ["%kernel.default_locale%"]
+ #       tags:
+ #           - { name: kernel.event_subscriber }

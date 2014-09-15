@@ -1,0 +1,6 @@
+Blogger\UsuariosBundle\Entity\Users:
+ properties:
+  login:
+   - NotBlank: ~
+  password:
+   - NotBlank: ~
