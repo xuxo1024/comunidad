@@ -115,6 +115,11 @@ class BlogController extends Controller
             'method' => 'POST',
         ));
 
+                
+        $form->add('lng', 'choice', array(
+        'choices'   => array('es' => 'Español', 'en' => 'Ingles'),
+        'required'  => true,
+       ));
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;

@@ -98,7 +98,7 @@ class CommentController extends Controller
     public function createAdminAction(Request $request)
     {
         $entity = new Comment();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createAdminCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -128,16 +128,50 @@ class CommentController extends Controller
         $locale = $entity->getLng();
         $roleflag = 0;
         $username = $entity->getUser();
+        
+        
+
+        
 
         $form = $this->createForm(new CommentType($roleflag,$username,$locale), $entity, array(
             'action' => $this->generateUrl('comment_create'),
             'method' => 'POST',
         ));
 
+        //TODO cambiar el tipo de blog en funcion del select
+        $blog = $this->getDoctrine()->getRepository('BloggerBlogBundle:Blog')->find(1);
+        $entity->setBlog($blog);
+
+        $form->add('lng', 'choice', array(
+        'choices'   => array('es' => 'Español', 'en' => 'Ingles'),
+        'required'  => true,
+        'data' => $blog->getLng(),
+        ));
+
+       
+       $form->add('blog', 'choice', array(
+            'mapped' => false,
+            'label' => 'Blog',
+            'required'  => true,
+            'choices' => $this->buildBlogs()));
+       
+
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
+
+    protected function buildBlogs() {
+    $choices          = [];
+    $table2Repository = $this->getDoctrine()->getRepository('BloggerBlogBundle:Blog');
+    $table2Objects    = $table2Repository->findAll();
+
+    foreach ($table2Objects as $table2Obj) {
+        $choices[$table2Obj->getId()] = $table2Obj->getId() . ' - ' . $table2Obj->getTitle();
+    }
+
+    return $choices;
+}
 
     /**
      * Displays a form to create a new Comment entity.
@@ -147,6 +181,8 @@ class CommentController extends Controller
     {
         $entity = new Comment();
         $form   = $this->createAdminCreateForm($entity);
+
+
 
         return $this->render('BloggerBlogBundle:AdminComment:new.html.twig', array(
             'entity' => $entity,
@@ -238,8 +274,8 @@ class CommentController extends Controller
             throw $this->createNotFoundException('Unable to find Comment entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createAdminDeleteForm($id);
+        $editForm = $this->createAdminEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -260,7 +296,7 @@ class CommentController extends Controller
      */
     public function deleteAdminAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createAdminDeleteForm($id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
